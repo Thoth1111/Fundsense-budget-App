@@ -5,8 +5,11 @@ Rails.application.routes.draw do
 
   root 'splash#index'
 
-  resources :entries
-  resources :groups
-  resources :users
+  resources :users, only: do
+    resources :groups, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
+      resources :entries, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+    end
+  end
+ 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 end

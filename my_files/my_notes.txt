@@ -29,7 +29,8 @@
     -Update Application controller with `before_action` and `configure_permitted_parameters`
     -Add `before_action :authenticate_user!` to User controller.
     -Configure routes by adding `devise_for :users`
-    
+    -Enable user authentication
+8. 
         
 
 
