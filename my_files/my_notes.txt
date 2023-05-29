@@ -17,7 +17,21 @@
     $ rails db:migrate
 6. Generate splash screen controller:
     $ rails g controller splash
+    -Edit controller
+    -Set splash screen as root in routes
+7. Add Devise for authentication:
+    -Add `gem 'devise'` to gemfile & bundle Install
+    $ rails generate devise:install
+    -Follow directions on screen
+    $ rails g devise:views
+    $ rails generate devise user
+    $ rails db:migrate
+    -Update Application controller with `before_action` and `configure_permitted_parameters`
+    -Add `before_action :authenticate_user!` to User controller.
+    -Configure routes by adding `devise_for :users`
     
+        
+
 
 
 
