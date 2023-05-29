@@ -7,7 +7,11 @@ class ApplicationController < ActionController::Base
 
   # Allows additional parameters to be passed to the Devise registration form
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:username])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name])
+  end
+
+  def after_sign_in_path_for(resource)
+    user_groups_path(current_user)
   end
 end
