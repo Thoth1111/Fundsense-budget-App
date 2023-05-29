@@ -3,11 +3,10 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root "splash#index"
+  root 'splash#index'
 
   resources :entries
   resources :groups
   resources :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
- 
 end
