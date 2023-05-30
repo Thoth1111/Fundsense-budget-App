@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# It provides common functionality for Entries.
 class EntriesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_entry, only: %i[show edit update destroy]

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# It provides common functionality and serves as a parent class for other controllers.
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -11,7 +12,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:name])
   end
 
-  def after_sign_in_path_for(resource)
+  def after_sign_in_path_for(_resource)
     user_groups_path(current_user)
   end
 end

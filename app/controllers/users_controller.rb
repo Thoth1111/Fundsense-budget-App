@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# It provides common functionality for Users.
 class UsersController < ApplicationController
   before_action :authenticate_user!
 
