@@ -1,11 +1,12 @@
 # It provides common functionality for Entries.
 class EntriesController < ApplicationController
+  load_and_authorize_resource
   before_action :authenticate_user!
   before_action :set_entry, only: %i[show edit update destroy]
 
   # GET /entries or /entries.json
   def index
-    @user = User.find(params[:user_id])
+    @user = current_user
     @group = Group.find(params[:group_id])
     @entries = Entry.all
   end
@@ -15,7 +16,7 @@ class EntriesController < ApplicationController
 
   # GET /entries/new
   def new
-    @user = User.find(params[:user_id])
+    @user = current_user
     @group = Group.find(params[:group_id])
     @entry = Entry.new
   end

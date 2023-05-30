@@ -1,12 +1,13 @@
 # It provides common functionality for Groups.
 class GroupsController < ApplicationController
+  load_and_authorize_resource
   before_action :authenticate_user!
   before_action :set_group, only: %i[show edit update destroy]
 
   # GET /groups or /groups.json
   def index
-    @user = User.find(params[:user_id])
-    @groups = Group.all
+    @user = current_user
+    @groups = @user.groups
   end
 
   # GET /groups/1 or /groups/1.json

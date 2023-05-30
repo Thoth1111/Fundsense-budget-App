@@ -7,4 +7,8 @@ class User < ApplicationRecord
   has_many :entries, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 50 }
+
+  def is?(role)
+    self.role == role.to_s
+  end
 end
