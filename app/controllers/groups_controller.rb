@@ -5,8 +5,8 @@ class GroupsController < ApplicationController
 
   # GET /groups or /groups.json
   def index
-    @user = User.find(params[:user_id])
-    @groups = Group.all
+    @user = current_user
+    @groups = @user.groups
   end
 
   # GET /groups/1 or /groups/1.json
@@ -23,7 +23,7 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       if @group.save
-        format.html { redirect_to user_groups_path(current_user), notice: 'Group was successfully created.' }
+        format.html { redirect_to user_groups_path(current_user), notice: 'Category was successfully created.' }
         format.json { render :show, status: :created, location: @group }
       else
         puts @group.errors.full_messages

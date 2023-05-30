@@ -1,15 +1,19 @@
 <%= link_to "back", user_groups_path %>
-<h1>Transactions</h1>
+<% if @group.user_id == current_user.id %>
+  <h1><%= @group.name %></h1>
 
-<div id="entries">
-  <%= @group.entries.sum(:amount) %> <br>
-  <% @group.entries.each do |entry| %>
-    <%= render entry %>
-  <% end %>
-</div>
+  <div id="entries">
+   Total:<%= @group.entries.sum(:amount) %> <br>
+    <% @group.entries.each do |entry| %>
+      <%= render entry %>
+    <% end %>
+  </div>
 
-<button>
-  <%= link_to "New transaction", new_user_group_entry_path(@user, @group) %>
-</button>
+  <button>
+    <%= link_to "New transaction", new_user_group_entry_path(@user, @group) %>
+  </button>
+<% else %>
+  <p>Page not found</p>
+<% end %>
 
 

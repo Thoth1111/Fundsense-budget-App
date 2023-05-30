@@ -1,6 +1,7 @@
 # It provides common functionality for Users.
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  protect_from_forgery with: :exception
 
   # GET /users or /users.json
   def index

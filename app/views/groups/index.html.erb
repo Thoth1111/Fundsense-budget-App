@@ -2,7 +2,7 @@
 
 <div id="groups">
   <% @groups.each do |group| %>
-    <a href="<%= user_group_entries_path(group.user, group) %>">
+    <a href="<%= user_group_entries_path(current_user, group) %>">
       <%= render group %>
     </a>
   <% end %>
