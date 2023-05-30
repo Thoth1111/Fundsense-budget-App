@@ -17,19 +17,21 @@ class EntriesController < ApplicationController
 
   # GET /entries/new
   def new
+    @user = User.find(params[:user_id])
+    @group = Group.find(params[:group_id])
     @entry = Entry.new
-  end
-
-  # GET /entries/1/edit
-  def edit; end
+  end  
 
   # POST /entries or /entries.json
   def create
     @entry = Entry.new(entry_params)
+    @group = Group.find(params[:entry][:group_id])
+    @entry.group = @group
+    @entry.author_id = current_user.id
 
     respond_to do |format|
       if @entry.save
-        format.html { redirect_to entry_url(@entry), notice: 'Entry was successfully created.' }
+        format.html { redirect_to user_group_entries_path(current_user, @group), notice: 'Entry was successfully created.' }
         format.json { render :show, status: :created, location: @entry }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -37,6 +39,9 @@ class EntriesController < ApplicationController
       end
     end
   end
+  
+  # GET /entries/1/edit
+  def edit; end
 
   # PATCH/PUT /entries/1 or /entries/1.json
   def update
@@ -70,6 +75,6 @@ class EntriesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def entry_params
-    params.require(:entry).permit(:name, :amount)
+    params.require(:entry).permit(:name, :amount, :author_id, :group_id)
   end
 end
