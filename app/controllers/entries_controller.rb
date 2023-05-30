@@ -7,7 +7,7 @@ class EntriesController < ApplicationController
 
   # GET /entries or /entries.json
   def index
-    @user = current_user
+    @user = User.find(params[:user_id])
     @group = Group.find(params[:group_id])
     @entries = Entry.all
   end

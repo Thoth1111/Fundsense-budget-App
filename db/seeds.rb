@@ -1,69 +1,70 @@
 # frozen_string_literal: true
 
-user = User.create(
+pat = User.create(
   name: 'Pat Wach',
   email: 'pat@patwach.com',
   password: 'PatWach'
 )
 
-if user.persisted?
-  savings = Group.create(
-    name: 'Savings',
-    icon: '',
-    user_id: user.id
+if pat.persisted?
+
+  sacco = Group.create(
+    name: 'Sacco',
+    icon: 'sacco.jpg',
+    user_id: pat.id
   )
 
   groceries = Group.create(
     name: 'Groceries',
-    icon: '',
-    user_id: user.id
+    icon: 'groceries.jpg',
+    user_id: pat.id
   )
 
   rent = Group.create(
     name: 'Rent',
-    icon: '',
-    user_id: user.id
+    icon: 'rent.jpg',
+    user_id: pat.id
   )
   Entry.create(
     name: 'May deposit',
     amount: 100_000,
-    group_id: savings.id,
-    author_id: user.id
+    group_id: sacco.id,
+    author_id: pat.id
   )
 
   Entry.create(
     name: 'June deposit',
     amount: 70_000,
-    group_id: savings.id,
-    author_id: user.id
+    group_id: sacco.id,
+    author_id: pat.id
   )
 
   Entry.create(
     name: 'food stuffs',
     amount: 10_000,
     group_id: groceries.id,
-    author_id: user.id
+    author_id: pat.id
   )
 
   Entry.create(
     name: 'shower items',
     amount: 2000,
     group_id: groceries.id,
-    author_id: user.id
+    author_id: pat.id
   )
 
   Entry.create(
     name: 'May rent',
     amount: 25_000,
     group_id: rent.id,
-    author_id: user.id
+    author_id: pat.id
   )
 
   Entry.create(
     name: 'June rent',
     amount: 25_000,
     group_id: rent.id,
-    author_id: user.id
+    author_id: pat.id
   )
   puts 'Seed data created successfully.'
 else
@@ -71,72 +72,72 @@ else
 end
 
 
-user2 = User.create(
+alw = User.create(
   name: 'Al Sim',
   email: 'sim@alsim.com',
   password: 'SimAAl'
 )
 
-if user2.persisted?
+if alw.persisted?
 
   entertainment = Group.create(
     name: 'Entertainment',
-    icon: '',
-    user_id: user2.id
+    icon: 'ent.jpg',
+    user_id: alw.id
   )
 
   travel = Group.create(
     name: 'Travel',
-    icon: '',
-    user_id: user2.id
+    icon: 'travel.jpg',
+    user_id: alw.id
   )
 
   investment = Group.create(
     name: 'Investment',
-    icon: '',
-    user_id: user2.id
+    icon: 'inv.jpg',
+    user_id: alw.id
   )
 
   Entry.create(
     name: 'Date night',
     amount: 4000,
     group_id: entertainment.id,
-    author_id: user2.id
+    author_id: alw.id
   )
 
   Entry.create(
     name: 'Video games',
     amount: 5000,
     group_id: entertainment.id,
-    author_id: user2.id
+    author_id: alw.id
   )
 
   Entry.create(
     name: 'Train ticket',
     amount: 6000,
     group_id: travel.id,
-    author_id: user2.id
+    author_id: alw.id
   )
 
   Entry.create(
     name: 'Air bnb',
     amount: 12_000,
     group_id: travel.id,
-    author_id: user2.id
+    author_id: alw.id
   )
 
   Entry.create(
     name: 'Stocks',
     amount: 10_000,
     group_id: investment.id,
-    author_id: user2.id
+    author_id: alw.id
   )
 
   Entry.create(
     name: 'Bonds',
     amount: 20_000,
     group_id: investment.id,
-    author_id: user2.id
+    author_id: alw.id
   )
   puts 'Seed data created successfully.'
 else
