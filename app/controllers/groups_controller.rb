@@ -5,7 +5,7 @@ class GroupsController < ApplicationController
 
   # GET /groups or /groups.json
   def index
-    @user = current_user
+    @user = User.find(params[:user_id])
     @groups = Group.all
   end
 
@@ -17,23 +17,24 @@ class GroupsController < ApplicationController
     @group = Group.new
   end
 
-  # GET /groups/1/edit
-  def edit; end
-
   # POST /groups or /groups.json
   def create
-    @group = Group.new(group_params)
+    @group = current_user.groups.new(group_params)
 
     respond_to do |format|
       if @group.save
-        format.html { redirect_to group_url(@group), notice: 'Group was successfully created.' }
+        format.html { redirect_to user_groups_path(current_user), notice: 'Group was successfully created.' }
         format.json { render :show, status: :created, location: @group }
       else
+        puts @group.errors.full_messages
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @group.errors, status: :unprocessable_entity }
       end
     end
   end
+
+  # GET /groups/1/edit
+  def edit; end
 
   # PATCH/PUT /groups/1 or /groups/1.json
   def update

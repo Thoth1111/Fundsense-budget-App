@@ -5,4 +5,5 @@ class Entry < ApplicationRecord
 
   validates :name, presence: true
   validates :amount, presence: true
+  validates :group_id, presence: true
 end

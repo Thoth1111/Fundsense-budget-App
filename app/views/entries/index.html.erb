@@ -1,11 +1,15 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Entries</h1>
+<%= link_to "back", user_groups_path %>
+<h1>Transactions</h1>
 
 <div id="entries">
-  <% @entries.each do |entry| %>
+  <%= @group.entries.sum(:amount) %> <br>
+  <% @group.entries.each do |entry| %>
     <%= render entry %>
   <% end %>
 </div>
 
-<%= link_to "back", user_groups_path %>
+<button>
+  <%= link_to "New transaction", new_user_group_entry_path(@user, @group) %>
+</button>
+
+
