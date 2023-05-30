@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # It provides common functionality for Entries.
 class EntriesController < ApplicationController
   before_action :authenticate_user!
@@ -29,7 +27,9 @@ class EntriesController < ApplicationController
 
     respond_to do |format|
       if save_entry
-        format.html { redirect_to user_group_entries_path(current_user, @group), notice: 'Entry was successfully created.' }
+        format.html do
+          redirect_to user_group_entries_path(current_user, @group), notice: 'Entry was successfully created.'
+        end
         format.json { render :show, status: :created, location: @entry }
       else
         format.html { render :new, status: :unprocessable_entity }
