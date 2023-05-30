@@ -28,7 +28,7 @@ class EntriesController < ApplicationController
     respond_to do |format|
       if save_entry
         format.html do
-          redirect_to user_group_entries_path(current_user, @group), notice: 'Entry was successfully created.'
+          redirect_to user_group_entries_path(current_user, @group), notice: 'Transaction was successfully created.'
         end
         format.json { render :show, status: :created, location: @entry }
       else
