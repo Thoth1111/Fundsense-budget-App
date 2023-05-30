@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # It provides common functionality for the splash screen.
 class SplashController < ApplicationController
   def index

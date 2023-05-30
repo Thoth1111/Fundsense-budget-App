@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # It provides common functionality for Entries.
 class EntriesController < ApplicationController
   before_action :authenticate_user!
