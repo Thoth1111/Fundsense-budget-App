@@ -1,10 +1,10 @@
-<%= form_with(model: entry) do |form| %>
-  <% if entry.errors.any? %>
+<%= form_with model: @entry, url: user_group_entries_path, method: :post, local: true, scope: :post do |form| %>
+  <% if @entry.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(entry.errors.count, "error") %> prohibited this entry from being saved:</h2>
+      <h2><%= pluralize(@entry.errors.count, "error") %> prohibited this transaction from being saved:</h2>
 
       <ul>
-        <% entry.errors.each do |error| %>
+        <% @entry.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
