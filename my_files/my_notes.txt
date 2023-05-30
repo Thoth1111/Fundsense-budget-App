@@ -1,0 +1,38 @@
+1. Setup:
+    $ rails new `project` --database=postgresql
+2. Installation:
+    -Add needed gem files
+    $ bundle Install
+    -Install linters
+3. Create the database:
+    $ rails db:create
+4. Create migration files:
+    $ rails g scaffold User name:string
+    $ rails g scaffold Group name:string icon:string
+    $ rails g scaffold Entry name:string amount:integer
+    $ rails g migration AddUSerToGroups user:references
+    $ rails g migration AddUserToEntries author:references (in migration file, foreign_key: { to_table: :users })
+    $ rails g migration AddGroupToEntries group:references
+5. Migrate to the database:
+    $ rails db:migrate
+6. Generate splash screen controller:
+    $ rails g controller splash
+    -Edit controller
+    -Set splash screen as root in routes
+7. Add Devise for authentication:
+    -Add `gem 'devise'` to gemfile & bundle Install
+    $ rails generate devise:install
+    -Follow directions on screen
+    $ rails g devise:views
+    $ rails generate devise user
+    $ rails db:migrate
+    -Update Application controller with `before_action` and `configure_permitted_parameters`
+    -Add `before_action :authenticate_user!` to User controller.
+    -Configure routes by adding `devise_for :users`
+    -Enable user authentication
+8. 
+        
+
+
+
+
