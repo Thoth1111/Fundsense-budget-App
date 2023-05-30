@@ -1,9 +1,9 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Entries</h1>
+<h1>Transactions</h1>
 
 <div id="entries">
-  <% @entries.each do |entry| %>
+  <% @group.entries.each do |entry| %>
     <%= render entry %>
   <% end %>
 </div>
