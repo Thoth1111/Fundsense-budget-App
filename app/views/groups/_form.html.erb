@@ -1,10 +1,10 @@
-<%= form_with(model: group) do |form| %>
-  <% if group.errors.any? %>
+<%= form_with model: @group, url: user_groups_path, method: :post, local: true, scope: :post do |form| %>
+  <% if @group.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(group.errors.count, "error") %> prohibited this group from being saved:</h2>
+      <h2><%= pluralize(@group.errors.count, "error") %> prohibited this category from being saved:</h2>
 
       <ul>
-        <% group.errors.each do |error| %>
+        <% @group.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>

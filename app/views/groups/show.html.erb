@@ -3,8 +3,10 @@
 <%= render @group %>
 
 <div>
-  <%= link_to "Edit this group", edit_group_path(@group) %> |
-  <%= link_to "Back to groups", groups_path %>
-
-  <%= button_to "Destroy this group", @group, method: :delete %>
+  <%= link_to "Edit category", edit_user_group_path(@group) %> |
+  <%= link_to "Back to categories", user_groups_path %>
+  <button>
+    <%= link_to "Delete", user_group_path(@group.user, @group), data: {turbo_method: :delete, turbo_confirm: 
+    "Delete this category?", turbo_action: "click->delete#deleteGroup"} %>
+  </button>
 </div>
