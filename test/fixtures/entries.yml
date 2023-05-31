@@ -1,0 +1,47 @@
+one:
+  name: 'food stuffs',
+  amount: 10_000,
+  group: one,
+  author: one
+  
+two:
+  name: 'shower items',
+  amount: 2000,
+  group: one,
+  author: one
+ 
+three:
+  name: 'May deposit',
+  amount: 100_000,
+  group: two,
+  author: one
+
+four:
+  name: 'June deposit',
+  amount: 70_000,
+  group: two,
+  author: one
+
+five:
+  name: 'Stocks',
+  amount: 10_000,
+  group: three,
+  author: two
+
+six:
+  name: 'Bonds',
+  amount: 20_000,
+  group: three,
+  author: two
+
+seven:
+  name: 'Reserve',
+  amount: 15_000,
+  group: four,
+  author: two
+
+eight:
+  name: 'Top up',
+  amount: 5_000,
+  group: four,
+  author: two

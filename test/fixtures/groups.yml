@@ -1,0 +1,19 @@
+one: 
+  name: 'Groceries',
+  icon: 'groceries.jpg',
+  user: one
+
+two:
+  name: 'Rent',
+  icon: 'rent.jpg',
+  user: one
+
+three:
+  name: 'Sacco',
+  icon: 'sacco.jpg',
+  user: two
+
+four:
+  name: 'Fuel',
+  icon: 'fuel.jpg',
+  user: two
