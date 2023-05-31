@@ -49,7 +49,9 @@ class EntriesController < ApplicationController
     @group = Group.find(params[:entry][:group_id])
     respond_to do |format|
       if @entry.update(entry_params)
-        format.html { redirect_to user_group_entries_path(current_user, @group), notice: 'Entry was successfully updated.' }
+        format.html do
+          redirect_to user_group_entries_path(current_user, @group), notice: 'Entry was successfully updated.'
+        end
         format.json { render :show, status: :ok, location: @entry }
       else
         format.html { render :edit, status: :unprocessable_entity }
