@@ -3,9 +3,13 @@
   <h1><%= @group.name %></h1>
 
   <div id="entries">
-   Total:<%= @group.entries.sum(:amount) %> <br>
+   Total: Kshs <%= @group.entries.sum(:amount) %> <br>
     <% @group.entries.each do |entry| %>
-      <%= render entry %>
+      <div class="group-entry">
+        <%= render entry %>
+        <%= link_to "Edit", edit_user_group_entry_path(current_user, @group, entry) %>
+        <%= link_to "Delete", user_group_entry_path(current_user, @group, entry), data: {turbo_method: :delete} %>
+      </div>
     <% end %>
   </div>
 

@@ -34,6 +34,11 @@
     -Followed `http://tutorials.jumpstartlab.com/topics/auth/authorization.html`
     -use this to generate a role column after generating the ability file. This is if role authorization will be implemented:
     $ rails g migration AddRoleToUsers role:string
+
+
+ $ rails g rspec:install
+ $ rails db:migrate RAILS_ENV=test
+ $ rails db:fixtures:load RAILS_ENV=test
         
 
 
