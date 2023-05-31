@@ -23,7 +23,7 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       if @group.save
-        format.html { redirect_to user_groups_path(current_user), notice: 'Category was successfully created.' }
+        format.html { redirect_to user_groups_path(current_user), notice: 'Category created successfully.' }
         format.json { render :show, status: :created, location: @group }
       else
         puts @group.errors.full_messages
@@ -38,9 +38,10 @@ class GroupsController < ApplicationController
 
   # PATCH/PUT /groups/1 or /groups/1.json
   def update
+    @group = Group.find(params[:id])
     respond_to do |format|
       if @group.update(group_params)
-        format.html { redirect_to group_url(@group), notice: 'Group was successfully updated.' }
+        format.html { redirect_to user_groups_path(current_user), notice: 'Category updated successfully.' }
         format.json { render :show, status: :ok, location: @group }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -51,11 +52,14 @@ class GroupsController < ApplicationController
 
   # DELETE /groups/1 or /groups/1.json
   def destroy
-    @group.destroy
-
     respond_to do |format|
-      format.html { redirect_to groups_url, notice: 'Group was successfully destroyed.' }
-      format.json { head :no_content }
+      if @group.destroy
+        format.html { redirect_to user_groups_path(current_user), notice: 'Category deleted successfully.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to user_groups_path(current_user), notice: 'Error deleting category.' }
+        format.json { render json: @group.errors, status: :unprocessable_entity }
+      end
     end
   end
 

@@ -4,6 +4,8 @@
   <% @groups.each do |group| %>
     <a href="<%= user_group_entries_path(current_user, group) %>">
       <%= render group %>
+      <%= link_to "Edit", edit_user_group_path(current_user, group) %>
+      <%= link_to "Delete", user_group_path(current_user, group), data: {turbo_method: :delete} %>
     </a>
   <% end %>
 </div>

@@ -1,10 +1,9 @@
-<h1>Editing entry</h1>
+<h1>Edit Transaction</h1>
 
-<%= render "form", entry: @entry %>
+<%= render "edit_form", entry: @entry %>
 
 <br>
 
 <div>
-  <%= link_to "Show this entry", @entry %> |
-  <%= link_to "Back to entries", entries_path %>
+  <%= link_to "Transactions", user_group_entries_path(current_user, @group) %>
 </div>

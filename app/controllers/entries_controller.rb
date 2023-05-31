@@ -39,13 +39,17 @@ class EntriesController < ApplicationController
   end
 
   # GET /entries/1/edit
-  def edit; end
+  def edit
+    @group = Group.find(params[:group_id])
+  end
 
   # PATCH/PUT /entries/1 or /entries/1.json
   def update
+    @entry = Entry.find(params[:id])
+    @group = Group.find(params[:entry][:group_id])
     respond_to do |format|
       if @entry.update(entry_params)
-        format.html { redirect_to entry_url(@entry), notice: 'Entry was successfully updated.' }
+        format.html { redirect_to user_group_entries_path(current_user, @group), notice: 'Entry was successfully updated.' }
         format.json { render :show, status: :ok, location: @entry }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -56,11 +60,14 @@ class EntriesController < ApplicationController
 
   # DELETE /entries/1 or /entries/1.json
   def destroy
-    @entry.destroy
-
     respond_to do |format|
-      format.html { redirect_to entries_url, notice: 'Entry was successfully destroyed.' }
-      format.json { head :no_content }
+      if @entry.destroy
+        format.html { redirect_to user_group_entries_path, notice: 'Entry was successfully destroyed.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to user_group_entries_path, notice: 'Error deleting entry.' }
+        format.json { render json: @entry.errors, status: :unprocessable_entity }
+      end
     end
   end
 
