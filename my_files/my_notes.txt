@@ -36,8 +36,9 @@
     $ rails g migration AddRoleToUsers role:string
 
 
- rails g rspec:install
- rails db:migrate RAILS_ENV=test
+ $ rails g rspec:install
+ $ rails db:migrate RAILS_ENV=test
+ $ rails db:fixtures:load RAILS_ENV=test
         
 
 

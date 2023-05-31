@@ -1,0 +1,23 @@
+one:
+ name: 'food stuffs'
+ amount: 10_000
+ group: one
+ author: one
+  
+two:
+ name: 'shower items'
+ amount: 2000
+ group: one
+ author: one
+
+three:
+ name: 'Stocks'
+ amount: 10_000
+ group: two
+ author: two
+
+four:
+ name: 'Bonds'
+ amount: 20_000
+ group: two
+ author: two

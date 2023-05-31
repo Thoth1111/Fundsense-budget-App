@@ -1,0 +1,14 @@
+one:
+  name: 'User1'
+  email: 'user1@email.com'
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  reset_password_token: 'one'
+  confirmed_at: '2023-05-01 00:00:00'
+  role: admin
+
+two:
+  name: 'User2'
+  email: 'user2@email.com'
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  reset_password_token: 'two'
+  confirmed_at: '2023-06-01 00:00:00'
