@@ -13,3 +13,16 @@
  *= require_tree .
  *= require_self
  */
+@font-face {
+  font-family: 'Pacifico';
+  src: url('/fonts/pacifico-regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: "ProximaNova", sans-serif;
+  color: #434C55;
+  background-color: #F0F2F1;
+  box-sizing: border-box;
+}

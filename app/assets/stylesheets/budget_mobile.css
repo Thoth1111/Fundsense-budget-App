@@ -1,0 +1,126 @@
+.notice {
+    color: green;
+    text-align: center;
+    font-size: 20px;
+  }
+  
+  .login-nav-panel {
+    color: #F0F2F1;
+    position: sticky;
+    padding-top: 3vh;
+    padding-left: 2vh;
+    margin-top: -3vh;
+    display: flex;
+    flex-direction: row;
+    gap: 35%;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100vw;
+    height: 9vh;
+    background: linear-gradient(to bottom, #3678C2, #2C609B);
+  }
+
+  .reset-btn {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #F0F2F1;
+  }
+  
+  .fancy-font {
+    font-family: "Pacifico";
+    font-size: 42px;
+  }
+
+  .std-page {
+    display: flex;
+    width: inherit;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .splash-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 80vh;
+  }
+
+  .splash-btns-container {
+    padding: 0;
+    display: flex;
+    width: 100%;
+    height: 15vh;
+    gap: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .splash-login-btn {
+    width: 95vw;
+    padding: 5% 0;
+    text-align: center;
+    text-decoration: none;
+    border:none;
+    outline: none;
+    color: #F0F2F1;
+    background-color: #3878C2;
+  }
+
+  .splash-signup-btn {
+    width: 95vw;
+    padding: 5% 0;
+    text-align: center;
+    text-decoration: none;
+    border:none;
+    outline: none;
+    color: #989DA3;
+  }
+
+  .not-visible {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .input-area{
+    width: 99.5vw;
+    height: 8vh;
+    margin: 1px auto;
+    border: none;
+    outline: none;
+  }
+
+  .input-area::placeholder {
+    color: #989DA3;
+    padding-left: 10px;
+  }
+
+  .links {
+    text-align: center;
+    width: 100vw;
+    padding:0 auto;
+    text-decoration: none;
+    color: #989DA3;
+    border: none;
+    outline: none;
+  }
+
+  .login {
+    position: fixed;
+    top: 6vh;
+    right: 2vh;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #F0F2F1;
+  }
+
+  .icon {
+    width: 24px;
+    height: 24px;
+  }

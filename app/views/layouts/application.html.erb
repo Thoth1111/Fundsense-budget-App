@@ -7,11 +7,12 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "budget_mobile", media: "screen and (min-width: 320px) and (max-width: 768px)" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <p style="color: green"><%= notice %></p>
+    <p style="color: green;"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>

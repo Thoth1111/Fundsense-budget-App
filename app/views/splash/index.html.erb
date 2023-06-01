@@ -1,8 +1,10 @@
-<div class="splash-title">
-    <h1>Fundsense</h1>
-    <p>personal finance management in your hands</p>
-</div>
-<div>
-    <%= link_to "Log In", new_user_session_path %>
-    <%= link_to "Sign Up", new_user_registration_path %>
+<div class="std-page">
+    <div class="splash-title">
+        <h1 class="fancy-font">Fundsense</h1>
+    </div>
+
+    <div class="splash-btns-container">
+        <%= link_to "LOG IN", new_user_session_path, class: "splash-login-btn" %>
+        <%= link_to "SIGN UP", new_user_registration_path, class: "splash-signup-btn" %>
+    </div>
 </div>
