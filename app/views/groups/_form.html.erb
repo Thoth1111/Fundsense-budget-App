@@ -12,16 +12,16 @@
   <% end %>
 
   <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
+    <%= form.label :name, style: "display: block", class: "not-visible" %>
+    <%= form.text_field :name, autofocus: true, placeholder: "Name", class: "input-area" %>
+  </div><br>
 
-  <div>
+  <div class="side-flex">
     <%= form.label :icon, style: "display: block" %>
-    <%= form.file_field :icon %>
+    <%= form.file_field :icon, direct_upload: true, style: "background-color: white;" %>
   </div>
 
-  <div>
-    <%= form.submit "Save" %>
+  <div style="margin-top: 4vh;">
+    <%= form.submit "Save", class: "login" %>
   </div>
 <% end %>

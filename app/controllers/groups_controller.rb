@@ -6,7 +6,11 @@ class GroupsController < ApplicationController
   # GET /groups or /groups.json
   def index
     @user = current_user
-    @groups = @user.groups
+    @groups = if params[:search]
+      @user.groups.where('name LIKE ?', "%#{params[:search]}%")
+    else
+      @user.groups
+    end
   end
 
   # GET /groups/1 or /groups/1.json
@@ -20,6 +24,7 @@ class GroupsController < ApplicationController
   # POST /groups or /groups.json
   def create
     @group = current_user.groups.new(group_params)
+    attach_icon if group_params[:icon]
 
     respond_to do |format|
       if @group.save
@@ -28,23 +33,6 @@ class GroupsController < ApplicationController
       else
         puts @group.errors.full_messages
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @group.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # GET /groups/1/edit
-  def edit; end
-
-  # PATCH/PUT /groups/1 or /groups/1.json
-  def update
-    @group = Group.find(params[:id])
-    respond_to do |format|
-      if @group.update(group_params)
-        format.html { redirect_to user_groups_path(current_user), notice: 'Category updated successfully.' }
-        format.json { render :show, status: :ok, location: @group }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @group.errors, status: :unprocessable_entity }
       end
     end
@@ -70,8 +58,15 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
   end
 
+  #Attach icon to group
+  def attach_icon
+    @group.icon.attach(group_params[:icon])
+  end
+
   # Only allow a list of trusted parameters through.
   def group_params
-    params.require(:group).permit(:name, :icon)
+    params.require(:group).permit(:name, :icon).tap do |whitelisted|
+      whitelisted[:icon] = params[:group][:icon]
+    end
   end
 end

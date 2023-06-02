@@ -20,6 +20,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Pacifico';
+  src: url('/fonts/pacifico-bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
 body {
   font-family: "ProximaNova", sans-serif;
   color: #434C55;

@@ -1,12 +1,26 @@
-<div class="std-page", style="justify-content: space-between;">
+<div class="std-page">
+  <div class="login-nav-panel", style="flex-direction: column; gap: 14px; height: 14vh;">
+    <div class="side-flex">
+      <%= link_to root_path do %>
+        <%= image_tag("menu.svg", class: "icon", alt: "Back") %>
+      <% end %>
+      <p>CATEGORIES</p>
+      <%= image_tag("search.svg", class: "icon search-icon", alt: "Search") %>
+    </div><br>
+    <div class="search-div">
+      <%= form_tag(user_groups_path(current_user), method: :get, class: "search-form hidden") do %><br><br>
+        <%= text_field_tag :search, params[:search], placeholder: "Search" %>
+        <%= submit_tag "Search", class: "search-btn" %>
+      <% end %>
+    </div>
+  </div>
   <% @groups.each do |group| %>
-    <a href="<%= user_group_entries_path(current_user, group) %>">
+    <a class="links" href="<%= user_group_entries_path(current_user, group) %>">
       <%= render group %>
-      <%= link_to "Edit", edit_user_group_path(current_user, group) %>
-      <%= link_to "Delete", user_group_path(current_user, group), data: {turbo_method: :delete} %>
     </a>
   <% end %>
-  <div class="green-div">
-   <%= link_to "New category", new_user_group_path, class: "green-btn" %>
-  </div>
+</div>
+<div class="green-div">
+  <%= link_to "New category", new_user_group_path, style: "color: Gainsboro; 
+  border: 1px solid Gainsboro; text-decoration: none; padding: 10px 30vw;" %>
 </div>

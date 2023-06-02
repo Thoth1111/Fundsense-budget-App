@@ -1,9 +1,9 @@
-<h1>New Category</h1>
+<div class="std-page">
+  <div class="login-nav-panel", style="gap: 20%";>
+    <%= link_to user_groups_path do %>
+      <%= image_tag("arrow-left.svg", class: "icon", alt: "Back") %>
+    <% end %>
+    <p>ADD CATEGORY</p>
+  </div><br>
 
 <%= render "form", group: @group %>
-
-<br>
-
-<div>
-  <%= link_to "Back to categories", user_groups_path %>
-</div>
