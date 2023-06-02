@@ -1,6 +1,4 @@
-<h1>Categories</h1>
-
-<div id="groups">
+<div class="std-page", style="justify-content: space-between;">
   <% @groups.each do |group| %>
     <a href="<%= user_group_entries_path(current_user, group) %>">
       <%= render group %>
@@ -8,6 +6,7 @@
       <%= link_to "Delete", user_group_path(current_user, group), data: {turbo_method: :delete} %>
     </a>
   <% end %>
+  <div class="green-div">
+   <%= link_to "New category", new_user_group_path, class: "green-btn" %>
+  </div>
 </div>
-
-<%= link_to "New category", new_user_group_path %>

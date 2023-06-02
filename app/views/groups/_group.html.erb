@@ -1,13 +1,20 @@
-<div id="<%= dom_id group %>">
-  <p>
-    <strong>Icon:</strong>
-    <%= group.icon %>
-  </p>
-  <p>
-    <strong>Name:</strong>
+<div class="std-page">
+  <div class="login-nav-panel">
+    <%= link_to root_path do %>
+      <%= image_tag("arrow-left.svg", class: "icon", alt: "Back") %>
+    <% end %>
+    <p>TRANSACTIONS</p>
+    
+  </div><br>
+<div id="<%= dom_id group %>", class="each-group">
+  <div class="g-icon">
+      <%= cl_image_tag(group.icon.key) if group.icon.attached? %>
+  </div>
+  <div class="g-details">
     <%= group.name %>
-  </p>
-  <p>
+    <%= group.created_at.strftime("%d %b %Y") %>
+  </div>
+  <div class="g-sum">
     Kshs <%= group.entries.sum(:amount) %>
-  </p>  
+  </div>  
 </div>

@@ -35,3 +35,6 @@
 
 #Ignore node modules
 /node_modules
+
+# Ignore cloudinary credentials files 
+/config/cloudinary.yml

@@ -1,6 +1,6 @@
 # User model.
 class User < ApplicationRecord
-  devise :database_authenticatable, :trackable, :registerable, :timeoutable, :lockable, :confirmable,
+  devise :database_authenticatable, :trackable, :registerable, :timeoutable, :lockable,
          :recoverable, :rememberable, :validatable
 
   has_many :groups, dependent: :destroy
