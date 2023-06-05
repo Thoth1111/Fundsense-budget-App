@@ -212,3 +212,9 @@
   background-color: #434c55;
   margin: 1vh 4vw;
 }
+
+.entries {
+  width: 95vw;
+  font-size: 12px;
+  color: #989da3;
+}

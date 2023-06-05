@@ -16,9 +16,8 @@
       <div class="g-totals">
         <p class="head-text">Kshs <%= @entries.sum(:amount) %></p><br>
       </div>
-    </div>    
-    <hr class="separator">
-    <div>
+    </div>   
+    <div class="each-group" style="margin-top: -1vh; flex-direction: column;">
       <% @entries.each do |entry| %>
         <%= render entry %>
       <% end %>

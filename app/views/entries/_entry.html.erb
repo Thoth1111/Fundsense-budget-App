@@ -1,9 +1,14 @@
-<div id="<%= dom_id entry %>", class="entries">
-  <div class="g-details">
-    <p>Transaction <%= entry.id %></p>
-    <p><%= entry.created_at.strftime("%d %b %Y") %></p>
-    <%= link_to "Delete", user_group_entry_path(current_user, @group, entry), 
-      data: {turbo_method: :delete}, class: "links" %>
-    <hr>
-    <p>Amount: Kshs <%= entry.amount %></p>
+<div id="<%= dom_id entry %>", class="entries" style="margin: 1vh auto; padding: 0; width: 100%; color: #9894ad;">
+  <hr style="color: #fbf9fa;">
+  <p style="margin: 0; padding: 0; font-size: 14px; color:#434c55;">Transaction N<sup>o</sup> <%= entry.id %>: <%= entry.name %></p>
+  <div style="display: flex; justify-content: flex-start; margin: 0; padding: 0; color: #9894ad; font-size: 12px;">
+  <%= image_tag("calendar.svg", alt: "calendar image") %>
+  <p><%= entry.created_at.strftime("%d %b %Y") %></p>
   </div>
+  <div style="display: flex; justify-content: space-between; align-items: center;">
+    <p style="margin: 0; padding: 0; font-size: 12px;">Amount:</p>
+    <p style="margin: 0; padding: 0; font-size: 12px;">Kshs <%= entry.amount %></p>
+  </div>
+  <%= link_to "Delete", user_group_entry_path(current_user, @group, entry), 
+    data: {turbo_method: :delete}, class: "links", style: "font-size: 12px;" %>
+</div>

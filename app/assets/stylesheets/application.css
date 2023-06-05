@@ -33,3 +33,11 @@ body {
   background-color: #f0f2f1;
   box-sizing: border-box;
 }
+
+.entries {
+  width: 95vw;
+  margin: 1vw auto;
+  padding: 0;
+  font-size: 14px;
+  color: #9894ad;
+}
