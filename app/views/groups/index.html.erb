@@ -1,9 +1,7 @@
 <div class="std-page">
   <div class="login-nav-panel", style="flex-direction: column; gap: 14px; height: 14vh;">
     <div class="side-flex">
-      <%= link_to root_path do %>
-        <%= image_tag("menu.svg", class: "icon", alt: "Back") %>
-      <% end %>
+     <%= render "layouts/menu" %>
       <p>CATEGORIES</p>
       <%= image_tag("search.svg", class: "icon search-icon", alt: "Search") %>
     </div><br>

@@ -7,10 +7,10 @@ class GroupsController < ApplicationController
   def index
     @user = current_user
     @groups = if params[:search]
-      @user.groups.where('name LIKE ?', "%#{params[:search]}%")
-    else
-      @user.groups
-    end
+                @user.groups.where('name LIKE ?', "%#{params[:search]}%")
+              else
+                @user.groups
+              end
   end
 
   # GET /groups/1 or /groups/1.json
@@ -58,7 +58,7 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
   end
 
-  #Attach icon to group
+  # Attach icon to group
   def attach_icon
     @group.icon.attach(group_params[:icon])
   end

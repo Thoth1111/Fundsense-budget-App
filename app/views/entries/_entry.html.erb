@@ -1,11 +1,9 @@
-<div id="<%= dom_id entry %>">
-  <p>
-    <strong>Name:</strong>
-    <%= entry.name %>
-  </p>
-
-  <p>
-    <strong>Amount:</strong>
-    Kshs <%= entry.amount %>
-  </p>
-</div>
+<div id="<%= dom_id entry %>", class="entries">
+  <div class="g-details">
+    <p>Transaction <%= entry.id %></p>
+    <p><%= entry.created_at.strftime("%d %b %Y") %></p>
+    <%= link_to "Delete", user_group_entry_path(current_user, @group, entry), 
+      data: {turbo_method: :delete}, class: "links" %>
+    <hr>
+    <p>Amount: Kshs <%= entry.amount %></p>
+  </div>

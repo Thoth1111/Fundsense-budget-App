@@ -1,9 +1,10 @@
-<h1>New transaction</h1>
+<div class="std-page">
+  <div class="login-nav-panel", style="gap: 15%";>
+    <%= link_to user_group_entries_path do %>
+      <%= image_tag("arrow-left.svg", class: "icon", alt: "Back") %>
+    <% end %>
+    <p>NEW TRANSACTION</p>
+  </div>
 
-<%= render "form", entry: @entry %>
-
-<br>
-
-<div>
-  <%= link_to "Back", user_group_entries_path %>
+    <%= render "form", entry: @entry %>
 </div>
