@@ -1,4 +1,4 @@
-<%= form_with model: @entry, url: user_group_entries_path(@group), method: :post, local: true do |form| %>
+<%= form_with model: @entry, url: user_group_entries_path(current_user, @group) do |form| %>
   <% if @entry.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(@entry.errors.count, "error") %> prohibited this transaction from being saved:</h2>
@@ -12,21 +12,38 @@
   <% end %>
 
   <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    <%= form.label :name, style: "display: block", class: "not-visible" %>
+    <%= form.text_field :name, autofocus: true, placeholder: "Name", class: "input-area" %>
   </div>
 
   <div>
-    <%= form.label :amount, style: "display: block" %>
-    <%= form.number_field :amount %>
-  </div>
+    <%= form.label :amount, style: "display: block", class: "not-visible" %>
+    <%= form.number_field :amount, autofocus: true, placeholder: "Amount", class: "input-area" %>
+  </div><br>
 
   <div>
-    <%= form.label :category, style: "display: block" %>
-    <%= form.collection_select :group_id, @user.groups, :id, :name %>
+    <%= form.label :category, style: "display: block; font-size: 14px; padding-left: 10px;" %><br>
+    <%= form.collection_check_boxes :group_ids, current_user.groups, :id, :name, include_hidden: false do |option| %>
+      <div style="display: flex; flex-direction: column; align-items: flex-start; padding-left: 10px;">
+        <%= option.label %>
+        <%= option.check_box %>
+      </div>
+    <% end %>
   </div>
 
-  <div>
-    <%= form.submit "save" %>
+  <div style="margin-top: 4vh;">
+    <%= form.submit "save", class: "login" %>
   </div>
 <% end %>
+
+<script>
+  $(document).ready(function() {
+    $('form').submit(function(e) {
+      var checked = $('input[type="checkbox"]:checked').length;
+      if (checked === 0) {
+        event.preventDefault();
+        alert("Please select a category");
+      }
+    });
+  });
+</script>

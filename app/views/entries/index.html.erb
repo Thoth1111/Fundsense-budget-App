@@ -1,23 +1,33 @@
-<%= link_to "back", user_groups_path %>
-<% if @group.user_id == current_user.id %>
-  <h1><%= @group.name %></h1>
-
-  <div id="entries">
-   Total: Kshs <%= @group.entries.sum(:amount) %> <br>
-    <% @group.entries.each do |entry| %>
-      <div class="group-entry">
-        <%= render entry %>
-        <%= link_to "Edit", edit_user_group_entry_path(current_user, @group, entry) %>
-        <%= link_to "Delete", user_group_entry_path(current_user, @group, entry), data: {turbo_method: :delete} %>
-      </div>
+<div class="std-page">
+  <div class="login-nav-panel", style="gap:30%;">
+    <%= link_to user_groups_path do %>
+      <%= image_tag("arrow-left.svg", class: "icon", alt: "Back") %>
     <% end %>
+    <p>DETAILS</p>
   </div>
-
-  <button>
-    <%= link_to "New transaction", new_user_group_entry_path(@user, @group) %>
-  </button>
-<% else %>
-  <p>Page not found</p>
-<% end %>
-
+  <% if @group.user_id == current_user.id %>
+    <div class="each-group">
+      <div class="g-icon">
+        <%= cl_image_tag(@group.icon.key, width: 50, height: 50) if @group.icon.attached? %>
+      </div>
+      <div class="g-details" style="justify-content: center; padding: 2vh;">
+        <p class="head-text"><%= @group.name %></p>
+      </div>
+      <div class="g-totals">
+        <p class="head-text">Kshs <%= @entries.sum(:amount) %></p><br>
+      </div>
+    </div>   
+    <div class="each-group" style="margin-top: -1vh; flex-direction: column;">
+      <% @entries.each do |entry| %>
+        <%= render entry %>
+      <% end %>
+    </div>
+    <div class="green-div">
+      <%= link_to "New transaction", new_user_group_entry_path(@user, @group), style: "color: Gainsboro; 
+      border: 1px solid Gainsboro; text-decoration: none; padding: 10px 30vw;" %>
+    </div>
+  <% else %>
+    <p>Page Not Found</p>
+  <% end %>
+</div>
 

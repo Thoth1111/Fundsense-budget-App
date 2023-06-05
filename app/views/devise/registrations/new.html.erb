@@ -1,34 +1,35 @@
-<h2>Sign up</h2>
+<div class="std-page">
+  <div class="login-nav-panel", style="gap: 25%;">
+    <%= link_to root_path do %>
+      <%= image_tag("arrow-left.svg", class: "icon", alt: "Back") %>
+    <% end %>
+    <p>REGISTER</p>
+  </div><br>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true %>
+    <%= f.label :name, class: "not-visible" %><br />
+    <%= f.text_field :name, autofocus: true, placeholder: "Name", class: "input-area" %>
   </div>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.label :email, class: "not-visible" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "input-area" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.label :password, class: "not-visible" %>
+    <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password (6 characters min)", class: "input-area" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.label :password_confirmation, class: "not-visible" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirm Password", class: "input-area" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <div style="margin-top: 4vh;">
+    <%= f.submit "Next", class: "login" %>
   </div>
 <% end %>
-
-<%= link_to "Log in", new_session_path(resource_name) %>

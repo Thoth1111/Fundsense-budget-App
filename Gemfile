@@ -81,3 +81,7 @@ end
 gem 'devise'
 
 gem 'cancancan'
+
+gem 'cloudinary'
+
+gem 'ffi'

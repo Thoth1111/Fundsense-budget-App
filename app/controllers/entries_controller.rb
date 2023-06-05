@@ -1,17 +1,14 @@
 # It provides common functionality for Entries.
 class EntriesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_entry, only: %i[show edit update destroy]
+  before_action :set_entry, only: %i[show destroy]
 
   # GET /entries or /entries.json
   def index
     @user = current_user
     @group = Group.find(params[:group_id])
-    @entries = Entry.all
+    @entries = @group.entries.where(author_id: current_user.id).order(created_at: :desc)
   end
-
-  # GET /entries/1 or /entries/1.json
-  def show; end
 
   # GET /entries/new
   def new
@@ -22,39 +19,18 @@ class EntriesController < ApplicationController
 
   # POST /entries or /entries.json
   def create
-    @entry = Entry.new(entry_params)
-    @group = Group.find(params[:entry][:group_id])
+    @group_ids = params[:entry][:group_ids]
+    check_group_ids unless @group_ids.nil?
 
     respond_to do |format|
-      if save_entry
+      if @entry.save
         format.html do
-          redirect_to user_group_entries_path(current_user, @group), notice: 'Transaction was successfully created.'
+          redirect_to user_group_entries_path(current_user, @entry.groups.first),
+                      notice: 'Transaction was successfully created.'
         end
         format.json { render :show, status: :created, location: @entry }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @entry.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # GET /entries/1/edit
-  def edit
-    @group = Group.find(params[:group_id])
-  end
-
-  # PATCH/PUT /entries/1 or /entries/1.json
-  def update
-    @entry = Entry.find(params[:id])
-    @group = Group.find(params[:entry][:group_id])
-    respond_to do |format|
-      if @entry.update(entry_params)
-        format.html do
-          redirect_to user_group_entries_path(current_user, @group), notice: 'Entry was successfully updated.'
-        end
-        format.json { render :show, status: :ok, location: @entry }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @entry.errors, status: :unprocessable_entity }
       end
     end
@@ -75,19 +51,23 @@ class EntriesController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
+  # Only allow a list of trusted parameters through.
+  def entry_params
+    params.require(:entry).permit(:name, :amount, group_ids: [])
+  end
+
   def set_entry
     @entry = Entry.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
-  def entry_params
-    params.require(:entry).permit(:name, :amount, :author_id, :group_id)
-  end
+  def check_group_ids
+    return unless @group_ids.present?
 
-  def save_entry
-    @entry.group = @group
-    @entry.author_id = current_user.id
-    @entry.save
+    @group_ids.each do |group_id|
+      @group = Group.find(group_id)
+      @entry = @group.entries.new(entry_params)
+      @entry.author = current_user
+      @entry.save
+    end
   end
 end
