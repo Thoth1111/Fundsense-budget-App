@@ -10,8 +10,9 @@ class Ability
     can :manage, :Entry, group: { user_id: user.id }, author_id: user.id
     can :manage, :EntriesGroup, entry: { group: { user_id: user.id } }
     can :manage, :User, id: user.id
-    
+
     return unless user.is?(:admin)
+
     can :manage, :all
     #
     # The first argument to `can` is the action you are giving the user
