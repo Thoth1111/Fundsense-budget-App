@@ -56,15 +56,18 @@ class EntriesController < ApplicationController
     params.require(:entry).permit(:name, :amount, group_ids: [])
   end
 
-  def check_group_ids
-    if @group_ids.present?
-      @group_ids.each do |group_id|
-        @group = Group.find(group_id)
-        @entry = @group.entries.new(entry_params)
-        @entry.author = current_user
-        @entry.save
-      end
-    end
+  def set_entry
+    @entry = Entry.find(params[:id])
+  end
 
+  def check_group_ids
+    return unless @group_ids.present?
+
+    @group_ids.each do |group_id|
+      @group = Group.find(group_id)
+      @entry = @group.entries.new(entry_params)
+      @entry.author = current_user
+      @entry.save
+    end
   end
 end
