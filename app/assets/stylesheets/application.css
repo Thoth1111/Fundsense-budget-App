@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
 @font-face {
   font-family: 'Pacifico';
   src: url('/fonts/pacifico-regular.ttf') format('truetype');

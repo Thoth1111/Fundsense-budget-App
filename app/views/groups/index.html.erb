@@ -1,15 +1,10 @@
 <div class="std-page">
-  <div class="login-nav-panel", style="flex-direction: column; gap: 14px; height: 14vh;">
+  <div class="login-nav-panel">
     <div class="side-flex">
-     <%= render "layouts/menu" %>
+      <%= image_tag("menu.svg", class: "icon hamburger", alt: "hamburger-icon") %>
       <p>CATEGORIES</p>
-      <%= image_tag("search.svg", class: "icon search-icon", alt: "Search") %>
-    </div><br>
-    <div class="search-div">
-      <%= form_tag(user_groups_path(current_user), method: :get, class: "search-form hidden") do %><br><br>
-        <%= text_field_tag :search, params[:search], placeholder: "Search" %>
-        <%= submit_tag "Search", class: "search-btn" %>
-      <% end %>
+      <%= link_to "Log out", destroy_user_session_path, style: "text-decoration: none; color: #f0f2f1;", data:
+                {turbo_method: :delete, turbo_confirm: "Are you sure you want to log out?"} %>
     </div>
   </div>
   <% @groups.each do |group| %>
@@ -19,6 +14,6 @@
   <% end %>
 </div>
 <div class="green-div">
-  <%= link_to "New category", new_user_group_path, style: "color: Gainsboro; 
+  <%= link_to "New category", new_user_group_path, style: "color: Gainsboro;
   border: 1px solid Gainsboro; text-decoration: none; padding: 10px 30vw;" %>
 </div>
