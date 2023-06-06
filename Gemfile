@@ -85,3 +85,5 @@ gem 'cancancan'
 gem 'cloudinary'
 
 gem 'ffi'
+
+gem "webrick"
