@@ -14,10 +14,6 @@ module BudgetApp
     config.load_defaults 7.0
     # Add to the asset pipeline
     config.assets.paths << Rails.root.join('public', 'fonts')
-
-    config.cloudinary.cloud_name = ENV['CLOUDINARY_CLOUD_NAME']
-    config.cloudinary.api_key = ENV['CLOUDINARY_API_KEY']
-    config.cloudinary.api_secret = ENV['CLOUDINARY_API_SECRET']
     
     config.active_storage.service_urls_expire_in = 1.hour
 
