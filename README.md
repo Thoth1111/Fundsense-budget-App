@@ -26,7 +26,7 @@
 - [❓ FAQ (OPTIONAL)](#faq)
 - [📝 License](#license)
 
-# 📖 Rails Group Capstone <a name="about-project"></a>
+# 📖 FundSense Mobile Budget App <a name="about-project"></a>
 
 FundSense budget app is a mobile web application where a user can manage their budget. They can create a list of categories in which a list of transactions can be associated. They can also see the amounts spent or allotted to any category or transaction they own. 
 
