@@ -1,9 +1,0 @@
-one: 
- name: 'Groceries'
- icon: 'groceries.jpg'
- user: one
-
-two:
- name: 'Sacco'
- icon: 'sacco.jpg'
- user: two
