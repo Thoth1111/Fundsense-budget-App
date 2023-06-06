@@ -1,9 +1,3 @@
-one: 
- name: 'Groceries'
- icon: 'groceries.jpg'
- user: one
-
-two:
- name: 'Sacco'
- icon: 'sacco.jpg'
- user: two
+group1:
+  name: Group A
+  user: user1

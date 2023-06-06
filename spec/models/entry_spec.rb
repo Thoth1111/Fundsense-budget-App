@@ -16,14 +16,14 @@ RSpec.describe Entry, type: :model do
   end
 
   describe 'associations' do
-    it 'should belong to group' do
-      entry = Entry.reflect_on_association(:group)
+    it 'should belong to a user' do
+      entry = Entry.reflect_on_association(:author)
       expect(entry.macro).to eq(:belongs_to)
     end
 
-    it 'should belong to user' do
-      entry = Entry.reflect_on_association(:author)
-      expect(entry.macro).to eq(:belongs_to)
+    it 'should have and belong to many groups' do
+      entry = Entry.reflect_on_association(:groups)
+      expect(entry.macro).to eq(:has_and_belongs_to_many)
     end
   end
 end

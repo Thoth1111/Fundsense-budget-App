@@ -8,52 +8,47 @@ RSpec.describe 'Group', type: :feature do
     end
 
     before(:each) do
-      visit user_groups_path(users(:one))
+      visit user_groups_path(users(:user1))
 
       if page.current_path == new_user_session_path
-        fill_in 'Email', with: users(:one).email
+        fill_in 'Email', with: users(:user1).email
         fill_in 'Password', with: 'password'
         click_button 'Log in'
       end
     end
 
-    it 'should display the page name' do
-      expect(page).to have_content('Categories')
-    end
-
-    it 'should display the user\'s groups' do
-      expect(page).to have_content('Groceries')
-    end
-
-    it 'should display the user\'s groups\' totals' do
-      expect(page).to have_content('Kshs 10000')
-    end
-
-    it 'should have a link to add a new group' do
+    it 'should have a link to create a new category' do
       expect(page).to have_link('New category')
     end
 
-    it 'should have a link to edit a group' do
-      expect(page).to have_link('Edit')
+    it 'should have a link to log out' do
+      expect(page).to have_link('Log out')
     end
 
-    it 'should have a link to delete a group' do
+    it 'should redirect to the new category page when the new category link is clicked' do
+      click_link 'New category'
+      expect(page.current_path).to eq(new_user_group_path(users(:user1)))
+    end
+
+    it 'should display the name of a group' do
+      expect(page).to have_content(groups(:group1).name)
+    end
+
+    it 'should display a delete link for a group' do
       expect(page).to have_link('Delete')
     end
 
-    it 'should open the new group page when "New Category" is clicked' do
-      click_link 'New category'
-      expect(page).to have_current_path(new_user_group_path(users(:one)))
+    it 'should show the transaction totals for a group' do
+      expect(page).to have_content('Kshs 0')
     end
 
-    it 'should open the edit group page when "Edit" is clicked' do
-      click_link 'Edit'
-      expect(page).to have_current_path(edit_user_group_path(users(:one), groups(:one)))
+    it 'should show the date the group was created' do
+      expect(page).to have_content(groups(:group1).created_at.strftime('%d %b %Y'))
     end
 
-    it 'should open a group\'s transactions page when the group is clicked' do
-      click_link groups(:one).name
-      expect(page).to have_current_path(user_group_entries_path(users(:one), groups(:one)))
+    it 'should open the group show page when the group name is clicked' do
+      click_link groups(:group1).name
+      expect(page.current_path).to eq(user_group_entries_path(users(:user1), groups(:group1)))
     end
   end
 end

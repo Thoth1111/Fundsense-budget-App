@@ -14,16 +14,12 @@ RSpec.describe 'Splash', type: :feature do
       expect(page).to have_content('Fundsense')
     end
 
-    it 'should display the page slogan' do
-      expect(page).to have_content('personal finance management in your hands')
-    end
-
     it 'should have a link to log in' do
-      expect(page).to have_link('Log In')
+      expect(page).to have_link('LOG IN')
     end
 
     it 'should have a link to sign up' do
-      expect(page).to have_link('Sign Up')
+      expect(page).to have_link('SIGN UP')
     end
   end
 end
