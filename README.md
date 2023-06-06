@@ -32,12 +32,12 @@ FundSense budget app is a mobile web application where a user can manage their b
 
 Watch the [Video Presentation](https://www.loom.com/share/4198572db7fe4ee4afe6cd4c90c4df00)
 
-<img src="/doc_media/screenshot88.png" alt="splash_screen" style="height: 400px; width: 250px"/>
-<img src="/doc_media/screenshot89.png" alt="log_in_page" style="height: 400px; width: 250px"/>
-<img src="/doc_media/screenshot90.png" alt="home_page" style="height: 400px; width: 250px"/>
-<img src="/doc_media/screenshot91.png" alt="transactions_page" style="height: 400px; width: 250px"/>
-<img src="/doc_media/screenshot92.png" alt="new_transaction_page" style="height: 400px; width: 250px"/>
-<img src="/doc_media/screenshot93.png" alt="new_category_page" style="height: 400px; width: 250px"/>
+<img src="/app/assets/images/screenshot88.png" alt="splash_screen" style="height: 400px; width: 250px"/>
+<img src="/app/assets/images/screenshot89.png" alt="log_in_page" style="height: 400px; width: 250px"/>
+<img src="/app/assets/images/screenshot90.png" alt="home_page" style="height: 400px; width: 250px"/>
+<img src="/app/assets/images/screenshot91.png" alt="transactions_page" style="height: 400px; width: 250px"/>
+<img src="/app/assets/images/screenshot92.png" alt="new_transaction_page" style="height: 400px; width: 250px"/>
+<img src="/app/assets/images/screenshot93.png" alt="new_category_page" style="height: 400px; width: 250px"/>
 
 
 ### Tech Stack <a name="tech-stack"></a>
