@@ -1,8 +1,16 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  resources :entries_groups
+  devise_for :users
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  root 'splash#index'
+
+  resources :users do
+    resources :groups, path: 'categories', only: %i[index show new create destroy] do
+      resources :entries, path: 'transactions', only: %i[index show new create destroy]
+    end
+  end
+
+  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 end

@@ -1,0 +1,19 @@
+<div class="std-page">
+  <div class="login-nav-panel">
+    <div class="side-flex">
+      <%= image_tag("menu.svg", class: "icon hamburger", alt: "hamburger-icon") %>
+      <p>CATEGORIES</p>
+      <%= link_to "Log out", destroy_user_session_path, style: "text-decoration: none; color: #f0f2f1;", data:
+                {turbo_method: :delete, turbo_confirm: "Are you sure you want to log out?"} %>
+    </div>
+  </div>
+  <% @groups.each do |group| %>
+    <a class="links" href="<%= user_group_entries_path(current_user, group) %>">
+      <%= render group %>
+    </a>
+  <% end %>
+</div>
+<div class="green-div">
+  <%= link_to "New category", new_user_group_path, style: "color: Gainsboro;
+  border: 1px solid Gainsboro; text-decoration: none; padding: 10px 30vw;" %>
+</div>

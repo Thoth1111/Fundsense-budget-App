@@ -1,0 +1,46 @@
+1. Move the font files to the appropriate directory:
+
+    Create a new directory called "fonts" under the "app/assets" directory in your Rails application.
+    Move the font file "pacifico-regular.ttf" to the "app/assets/fonts" directory.
+
+2. Configure the asset pipeline to serve font files:
+
+    Open the "config/initializers/assets.rb" file in your Rails application.
+
+    Add the following line to the file:
+
+     Rails.application.config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+
+3. Precompile the assets:
+
+    Run the following command in your terminal:
+
+        $ rails assets:precompile
+
+4. Verify the font file is accessible:
+
+    Open your browser and visit the URL corresponding to the font file, for example, "http://localhost:3000/assets/pacifico-regular.ttf".
+    Ensure that the font file is accessible and doesn't result in a routing error.
+
+5. Use the font in your CSS:
+
+    Open your CSS file (e.g., "application.css" or "application.scss").
+
+    Add the following CSS rule to apply the font to specific elements:
+
+    @font-face {
+      font-family: 'Pacifico';
+      src: url('/assets/pacifico-regular.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    body {
+      font-family: 'Pacifico', cursive;
+    }
+
+    Adjust the font-family and selector as per your requirements.
+
+6. Save the changes to the CSS file.
+
+7. Refresh your Ruby on Rails application in the browser to apply the font style.

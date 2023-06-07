@@ -1,0 +1,21 @@
+<div class="std-page">
+  <div class="login-nav-panel", style="gap: 20%;">
+    <%= link_to root_path do %>
+      <%= image_tag("arrow-left.svg", class: "icon", alt: "Back") %>
+    <% end %>
+    <p>RESET PASSWORD</p>
+  </div><br>
+
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :email, class: "not-visible" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "input-area" %>
+  </div>
+
+  <div style="margin-top: 4vh;">
+    <%= f.submit "Send reset instructions", class: "links" %>
+  </div>
+<% end %>

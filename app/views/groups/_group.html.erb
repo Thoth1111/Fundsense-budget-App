@@ -1,0 +1,13 @@
+<div id="<%= dom_id group %>", class="each-group">
+  <div class="g-icon">
+      <%= cl_image_tag(group.icon.key, width: 70, height: 70) if group.icon.attached? %>
+  </div>
+  <div class="g-details">
+    <p style="font-size: 14px; margin: 0; padding: 0;"><%= truncate(group.name, length: 20, separator: ' ') %></p>
+    <p><%= group.created_at.strftime("%d %b %Y") %></p>
+  </div>
+  <div class="g-totals">
+    <p class="head-text">Kshs <%= group.entries.sum(:amount) %></p><br>
+    <%= link_to "Delete", user_group_path(current_user, group), data: {turbo_method: :delete}, class: "links", style: "font-size: 12px;" %>
+  </div>  
+</div>

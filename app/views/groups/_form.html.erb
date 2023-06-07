@@ -1,0 +1,27 @@
+<%= form_with model: @group, url: user_groups_path(current_user), method: :post, local: true do |form| %>
+  <% if @group.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@group.errors.count, "error") %> prohibited this category from being saved:</h2>
+
+      <ul>
+        <% @group.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block", class: "not-visible" %>
+    <%= form.text_field :name, autofocus: true, placeholder: "Name", class: "input-area" %>
+  </div><br>
+
+  <div class="side-flex">
+    <%= form.label :icon, style: "display: block" %>
+    <%= form.file_field :icon, style: "background-color: white;" %>
+  </div>
+
+  <div style="margin-top: 4vh;">
+    <%= form.submit "Save", class: "login" %>
+  </div>
+<% end %>

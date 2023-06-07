@@ -1,0 +1,27 @@
+<div class="std-page">
+  <div class="login-nav-panel">
+    <%= link_to root_path do %>
+      <%= image_tag("arrow-left.svg", class: "icon", alt: "Back") %>
+    <% end %>
+    <p>LOGIN</p>
+  </div><br>
+  
+  <div>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field">
+        <%= f.label :email, class: "not-visible" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "input-area" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password, class: "not-visible" %>
+        <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password", class: "input-area" %>
+      </div>
+        <%= f.submit "Log in", class: "login" %>
+    <% end %>
+  </div>
+
+  <div style="margin-top: 4vh;">
+    <%= link_to "Forgot password?", new_password_path(resource_name), class: "links" %>
+  </div>
+</div>
