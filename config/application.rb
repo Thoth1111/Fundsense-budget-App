@@ -14,6 +14,8 @@ module BudgetApp
     config.load_defaults 7.0
     # Add to the asset pipeline
     config.assets.paths << Rails.root.join('public', 'fonts')
+    
+    config.active_storage.service_urls_expire_in = 1.hour
 
     # Configuration for the application, engines, and railties goes here.
     #
