@@ -40,8 +40,7 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = "X-Accel-Redirect" # for NGINX
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :disk
-  config.active_storage.url_options = { host: 'https://fundsense-budget-app.onrender.com' }
+  config.active_storage.service = :cloudinary
 
 
   # Mount Action Cable outside main process or domain.
