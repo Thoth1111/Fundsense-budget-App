@@ -52,7 +52,7 @@ Watch the [Video Presentation](https://www.loom.com/share/4198572db7fe4ee4afe6cd
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### 🚀 Live Demo
-Access the development [demo](https://fundsense-budget-app.onrender.com)
+Access the deployed [demo](https://fundsense-budget-app.onrender.com)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
