@@ -62,7 +62,7 @@ To get a local copy up and running, follow these steps:
 
 ### Prerequisites
 
-In order to run this project you need: rails
+In order to run this project you need: rails, cloudinary for active_storage service. 
 
 ### Setup
 
@@ -76,7 +76,8 @@ Install this project with:
 bundle install
 ```
 
-Create `.env` file in the root directory and add your databse configurations (See `.env.example`).
+Create `.env` file in the root directory and add your database configurations and cloudinary credentials (See `.env.example`). If a cloudinary account is unavailable, change the `config.active_storage.service` value to `:disk` in the development environment and include this line `config.active_storage.url_options = { host: 'your-production-domain.com' }`. Replace `your-production-domain.com` with your host name. 
+
 Run `rails db:create` in terminal to create the database.
 Precompile assets by running `rails assets:precompile` & `rails assets:clean`.
 Execute migrations with `rails db:migrate`.

@@ -86,4 +86,4 @@ gem 'cloudinary'
 
 gem 'ffi'
 
-gem "webrick"
+gem 'webrick'
